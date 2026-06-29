@@ -33,3 +33,18 @@ export async function apiGet<T>(path: string): Promise<T> {
   if (!res.ok) throw new Error(`request failed: ${res.status}`);
   return res.json();
 }
+
+export async function apiPost<T>(path: string, body?: unknown): Promise<T> {
+  const token = getToken();
+  const res = await fetch(`${BASE}${path}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    },
+    body: body ? JSON.stringify(body) : undefined,
+  });
+  if (res.status === 401) throw new Error("unauthorized");
+  if (!res.ok) throw new Error(`request failed: ${res.status}`);
+  return res.json();
+}
