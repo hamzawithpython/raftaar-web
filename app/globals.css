@@ -12,12 +12,8 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* App is designed light-only. Do NOT flip to dark on OS preference --
+   that made table text (which inherits --foreground) near-white on white. */
 
 body {
   background: var(--background);

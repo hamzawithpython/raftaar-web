@@ -53,12 +53,12 @@ export default function LeadsPage() {
             ) : (
               leads.map((l) => (
                 <tr key={l.id} className="border-t border-neutral-100">
-                  <td className="px-4 py-3">{l.contact}</td>
-                  <td className="px-4 py-3">{l.intent ?? "-"}</td>
-                  <td className="px-4 py-3">{l.interest ?? "-"}</td>
-                  <td className="px-4 py-3">{l.location ?? "-"}</td>
-                  <td className="px-4 py-3">{l.score ?? "-"}</td>
-                  <td className="px-4 py-3">
+                  <td className="px-4 py-3 text-neutral-800">{l.contact}</td>
+                  <td className="px-4 py-3 text-neutral-800">{l.intent ?? "-"}</td>
+                  <td className="px-4 py-3 text-neutral-800">{l.interest ?? "-"}</td>
+                  <td className="px-4 py-3 text-neutral-800">{l.location ?? "-"}</td>
+                  <td className="px-4 py-3 text-neutral-800">{l.score ?? "-"}</td>
+                  <td className="px-4 py-3 text-neutral-800">
                     <span className={`rounded-full px-2 py-0.5 text-xs ${l.qualified ? "bg-green-100 text-green-700" : "bg-neutral-100 text-neutral-600"}`}>
                       {l.stage}
                     </span>
