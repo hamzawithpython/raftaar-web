@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { apiGet } from "@/lib/api";
 
 type Lead = {
@@ -13,6 +14,7 @@ export default function LeadsPage() {
   const [leads, setLeads] = useState<Lead[]>([]);
   const [summary, setSummary] = useState<Summary | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
     Promise.all([
@@ -52,7 +54,7 @@ export default function LeadsPage() {
               <tr><td colSpan={6} className="px-4 py-8 text-center text-neutral-400">No leads yet</td></tr>
             ) : (
               leads.map((l) => (
-                <tr key={l.id} className="border-t border-neutral-100">
+                <tr key={l.id} onClick={() => router.push(`/leads/${l.id}`)} className="cursor-pointer border-t border-neutral-100 hover:bg-neutral-50">
                   <td className="px-4 py-3 text-neutral-800">{l.contact}</td>
                   <td className="px-4 py-3 text-neutral-800">{l.intent ?? "-"}</td>
                   <td className="px-4 py-3 text-neutral-800">{l.interest ?? "-"}</td>
